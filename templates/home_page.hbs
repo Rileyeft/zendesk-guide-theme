@@ -1,0 +1,119 @@
+<section class="section hero bg-dark" style="background-color:#334462">
+  <div class="hero-inner container container-md">
+    <h2 class="hero-header text-center pb-2">Hi! How can we help?</h2>
+    {{search submit=false instant=true class='search search-full' placeholder='Search (e.g. “add contact” or “bill templates”)'}}
+  </div>
+</section>
+
+<div class="container">
+  <section class="section knowledge-base">
+    <h2 class="text-center mb-3">Popular Topics in the Guide</h2>
+    <div class="categories blocks">
+      <ul class="blocks-list">
+        {{#each categories}}
+          {{#if ../has_multiple_categories}}
+            {{#if sections}}
+            <li class="blocks-item column-5 column-sm-5 column-lg-2">
+                <a href="{{url}}" data-id="{{id}}" class="blocks-item-link">
+                    <div class="blocks-icon">
+                        {{#is name 'Admin'}}
+                            <img src="{{asset 'settings_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Get Started'}}
+                            <img src="{{asset 'home_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Navigation'}}
+                            <img src="{{asset 'apps_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Matters'}}
+                            <img src="{{asset 'matter_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Tasks'}}
+                            <img src="{{asset 'task_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Timesheet'}}
+                            <img src="{{asset 'timesheet_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Billing'}}
+                            <img src="{{asset 'billing_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Trust Accounting'}}
+                            <img src="{{asset 'bill_profile_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Contacts'}}
+                            <img src="{{asset 'contacts_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Calendar'}}
+                            <img src="{{asset 'calendar_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Documents'}}
+                            <img src="{{asset 'folder_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Email'}}
+                            <img src="{{asset 'message_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                        {{#is name 'Accounting'}}
+                            <img src="{{asset 'accounting_solid.svg' }}" class="img-svg" />
+                        {{/is}}
+                    </div>
+                    <h5 class="blocks-item-title">{{name}}</h5>
+                </a>
+            </li>
+            {{/if}}
+          {{/if}}
+        {{/each}}
+      </ul>
+      <div class="d-flex justify-content-center mt-3 mt-md-5">
+        <button role="button" id="myBtn" class="btn-transparent font-size-large line-height-flat py-2"><img src="{{asset 'card_list.svg'}}" class="img-svg mr-2" alt="card list"/>View all Topics</button>
+      </div>
+    </div>
+  </section>
+
+   <div class="viewed-articles">
+    {{recent_articles}}
+   </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header pl-3 py-3">
+        <h2 class="modal-title">All Topics</h2>
+        <span id="myClose" class="close icon-close"></span>
+    </div>
+    <div class="modal-body custom-scrollbar">
+      <div class="view-all-topics">
+          <ul class="py-0">
+          {{#each categories}}
+          <li class="pl-3 py-3 border-bottom border-light bg-grey-hover">
+            {{#if ../has_multiple_categories}}
+              <div class="view-all-categories">
+                  <h3 class="title mb-2"><a href='{{url}}' class="map-item" title="Open this category">{{name}}</a></h3>
+              </div>
+              {{#if sections}}
+              <ul class="column-by-3 pl-4">
+                {{#each sections}}
+                <li class="item {{#if internal}}item-internal{{/if}}">
+                    <a href='{{url}}' class="font-size-default map-item" title="Open this section">
+                      {{name}} {{#if articles}}<span class="count article-count">{{ article_count}}</span>{{/if}}
+                    </a>
+                    {{#if internal}}
+                        <span class="icon-lock" title="{{t 'internal'}}"></span>
+                      {{/if}}
+                </li>
+              {{/each}}
+              </ul>
+              {{/if}}
+
+            {{/if}}
+            </li>
+          {{/each}}
+          </ul>
+      </div>
+      </div>
+  </div>
+  <div class="modal-overlay" id="myOverlay"></div>
+</div>
+<!-- End Modal -->

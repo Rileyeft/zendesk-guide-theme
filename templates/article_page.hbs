@@ -1,0 +1,151 @@
+<div class="bg-grey py-3 print-hidden">
+    <div class="container container-md">
+      <div class="search-nav">
+        {{search submit=false instant=true class='search'}}
+      </div>
+    </div>
+</div>
+<div class="bg-white border-top pt-1 pt-sm-2 print-hidden">
+    <div class="container container-md">
+        <div class="d-flex align-items-center">
+            <button type="button" id="drawerMenuButton" class="btn drawer-menu-button mr-2">
+                <img class="img-svg icon-hamburger-menu" src="{{ asset 'hamburger_menu.svg'}}" />
+                <img class="img-svg icon-hamburger-menu-solid" src="{{ asset 'hamburger_menu_solid.svg'}}" />
+            </button>
+            {{breadcrumbs}}
+            <ul class="breadcrumbs current">
+                <li>{{article.title}}</li>
+            </ul>
+        </div>
+  </div>
+</div>
+<div class="container container-md print-a4">
+  <div class="article-container" id="article-container">
+    <nav class="nav-sidebar print-hidden" id="drawerMenu" role="canvas">
+      <div class="nav-sidebar-inner">
+          <div class="section-articles collapsible-sidebar">
+            <h3 class="collapsible-sidebar-title side-nav-title">
+                {{t 'articles_in_section'}}
+                <button class="drawer-menu-button btn btn--soft"><img class="img-svg mirror-y bg-none" src="{{ asset 'arrow_dash_right_more.svg'}}" /></button>
+            </h3>
+            <ul class="mt-2">
+              {{#each section.articles}}
+                <li>
+                  <a href="{{url}}" class="side-nav-item {{#is id ../article.id}}current-article{{/is}}">
+                    {{#is id ../article.id}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="25" height="25" viewBox="0 0 30 30">
+                        <path d="M9.78,3.83A.73.73,0,0,0,9.26,4a.74.74,0,0,0,0,1L19.17,15,9.26,24.91a.75.75,0,0,0,.52,1.27.79.79,0,0,0,.53-.22L20.74,15.52A.71.71,0,0,0,21,15a.75.75,0,0,0-.22-.53L10.31,4a.77.77,0,0,0-.53-.21Z"/>
+                        </svg>
+                    {{/is}}
+                    {{title}}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+            {{#if section.more_articles}}
+              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}} Articles</a>
+            {{/if}}
+          </div>
+      </div>
+    </nav>
+    <article class="article flex-col mt@print-0">
+      <header class="article-header">
+        <h1 title="{{article.title}}" class="article-title">
+          {{article.title}}
+          {{#if article.internal}}
+            <span class="icon-lock mx-2" title="{{t 'internal'}}"></span>
+          {{/if}}
+        </h1>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="article-author print-hidden">
+              <div class="avatar article-avatar">
+                {{#if article.author.agent}}
+                  <span class="icon-agent"></span>
+                {{/if}}
+                <img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+              </div>
+              <div class="article-meta">
+
+                <div class="">{{article.author.name}}</div>
+
+                <ul class="meta-group">
+                  {{#is article.created_at article.updated_at}}
+                    <li class="meta-data">{{date article.created_at timeago=true}}</li>
+                  {{else}}
+                    <li class="meta-data">{{date article.updated_at timeago=true}}</li>
+                    <li class="meta-data">{{t 'updated'}}</li>
+                  {{/is}}
+                </ul>
+              </div>
+            </div>
+            <div class="article-followup print-hidden">
+                {{#if attachments}}
+                <a role="button" class="btn btn-outline pl-2 pr-3" href="#attachment" id="printArticle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
+                    <path d="M20.51,9.31v9.38A3.91,3.91,0,0,1,12.7,19a1,1,0,0,1,0-.17v-8a2.33,2.33,0,1,1,4.66,0v7.79a.74.74,0,1,1-1.48,0V10.9a.85.85,0,0,0-1.7,0v7.79a2.44,2.44,0,1,0,4.88,0V9.31a4,4,0,0,0-8.06,0v9.6a5.63,5.63,0,0,0,5.62,5.63.74.74,0,1,1,0,1.47,7.11,7.11,0,0,1-7.1-7.1V9.31a5.51,5.51,0,0,1,11,0Z"/>
+                    </svg>
+                    Attachment<span class="attachment-plural"></span>
+                </a>
+                {{/if}}
+                <button role="button" class="btn btn-outline mr-1 mr-md-3 print-hidden" id="printArticle" onClick="window.print();">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
+                    <path d="M22.34,7.05H20.12V5.43a.6.6,0,0,0-.6-.61h-9a.6.6,0,0,0-.6.61V7.05H7.66A1.74,1.74,0,0,0,5.92,8.78V19a1.73,1.73,0,0,0,1.74,1.73H9.88v3.85a.6.6,0,0,0,.6.61h9a.6.6,0,0,0,.6-.61V20.72h2.22A1.72,1.72,0,0,0,24.07,19V8.78A1.73,1.73,0,0,0,22.34,7.05ZM11.08,6h7.84v1H11.08ZM18.92,24H11.08V18.78h7.84Zm3.95-5a.53.53,0,0,1-.53.53H20.12v-.74H21V17.57H9v1.21h.91v.74H7.66A.53.53,0,0,1,7.13,19V8.78a.52.52,0,0,1,.53-.52H22.34a.52.52,0,0,1,.53.52ZM12.74,21.74h4.52V23H12.74Zm0-2.22h4.52v1.2H12.74ZM19.52,8.8H16.68a.6.6,0,0,0-.6.6v1.89a.6.6,0,0,0,.6.6h2.84a.6.6,0,0,0,.6-.6V9.4A.6.6,0,0,0,19.52,8.8Zm-.6,1.89H17.28V10h1.64Z"></path>
+                    </svg>
+                    Print
+                </button>
+                {{subscribe}}
+            </div>
+        </div>
+      </header>
+
+      <section class="article-info">
+        <div class="article-content">
+          <div class="article-body">{{article.body}}</div>
+
+          {{#if attachments}}
+          <div class="article-attachments" id="attachment">
+            <div class="attachments-header mb-2"><span id="attachmentCount" class="px-1 font-weight-bold">{{attachments.length}}</span>Attachment<span class="attachment-plural"></span></div>
+            <script type="text/javascript">
+            $(document).ready(function() {
+                $attachmentNumber = parseInt($('#attachmentCount').text());
+                if($attachmentNumber > 1) {
+                  $('.attachment-plural').text('s');
+                }
+            });
+            </script>
+            <ul class="attachments">
+              {{#each attachments}}
+                <li class="attachment-item">
+                  <a href="{{url}}" target="_blank">{{name}}</a>
+                  <div class="attachment-meta meta-group">
+                    <span class="attachment-meta-item meta-data">{{size}}</span>
+                    <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+                  </div>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}}
+        </div>
+      </section>
+
+      <footer class="print-hidden">
+        {{#with article}}
+          <div class="article-votes print-hidden">
+            <div class="article-votes-question">{{t 'was_this_article_helpful'}}</div>
+            <div class="article-votes-controls" role='radiogroup'>
+              {{vote 'up' role='radio' class='button article-vote article-vote-up'}}
+              {{vote 'down' role='radio' class='button article-vote article-vote-down'}}
+            </div>
+          </div>
+        {{/with}}
+
+        <p class="font-size-small my-0 text-center">Still can’t find what you’re looking for? <br><a href="//ap-southeast-2.actionstep.com/mym/asfw/frontend/redirect/help-center-ticket" target="_new">Submit a Ticket</a> &nbsp; • &nbsp; <a href="//actionstep.uservoice.com/" target="_new">View our Forums</a></p>
+
+      </footer>
+    </article>
+  </div>
+</div>
+<div class="article-return-to-top print-hidden">
+ <a href="#article-container">{{t 'return_to_top'}}<span class="icon-arrow-up"></span></a>
+</div>

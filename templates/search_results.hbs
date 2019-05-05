@@ -1,0 +1,60 @@
+<div class="bg-grey py-3">
+    <div class="container container-md">
+      <div class="search-nav">
+        {{search submit=false}}
+      </div>
+    </div>
+</div>
+<div class="bg-white border-top pt-1 pt-sm-2 print-hidden">
+    <div class="container container-md">
+        {{breadcrumbs}}
+  </div>
+</div>
+<div class="container container-md">
+  <div class="search-results-container">
+      <header class="search-results-header">
+        <h1 class="text-capital">{{t 'search_results'}}</h1>
+        <h1 class="search-results-keyword font-weight-light">{{t 'results' query=query count=results_count}}</h1>
+      </header>
+
+      <div class="search-results">
+        <section class="search-results-row">
+          {{#if article_results}}
+            <ul class="search-results-list">
+              {{#each article_results}}
+                <li class="search-result">
+                  <div class="search-result-header d-flex justify-content-between">
+                    <a href="{{url}}" class="search-result-link">{{title}}</a>
+                  </div>
+                  <ul class="meta-group">
+                    <li>
+                      <ol class="breadcrumbs search-result-breadcrumbs">
+                        {{#each path_steps}}
+                          <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
+                        {{/each}}
+                      </ol>
+                    </li>
+                  </ul>
+                  <div class="search-result-description">{{text}}</div>
+                </li>
+              {{/each}}
+            </ul>
+          {{else}}
+            <div class="no-results">
+              <div class="no-results-text">
+              {{t 'no_results' query=query}}
+              </div>
+              <div class="back-to-home">
+              {{#link 'help_center'}}
+                Back to home
+              {{/link}}
+              </div>
+            </div>
+          {{/if}}
+        </section>
+
+      </div>
+  </div>
+
+  {{pagination}}
+</div>

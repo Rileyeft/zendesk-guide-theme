@@ -1,0 +1,62 @@
+<header class="header bg-dark print-hidden" style="background-color:#334462">
+    <div class="container container-xl">
+        <div class="logo">
+            {{#link 'help_center' class='logo-link' }}
+                <img src="{{settings.logo}}" alt="{{t 'logo'}}" height="40">
+                <h2 class="sub-text wrap-text   ">Help Center</h4>
+            {{/link}}
+        </div>
+        <ul class="nav-wrapper">
+          <li class="nav-item toggle-hidden dropdown">
+                <button class="button-clear dropdown-toggle" role="button" style="font-size:18px; border-style:solid; border-width:1px; border-color:#ffffff">
+                    Contact Us & Resources
+                </button>
+                <div id="resource-dropdown" class="dropdown-menu dropdown-menu-center dropdown-menu-caret" aria-expanded="false">
+                    <div role="menu" id="resource-dropdown">
+                        {{#link 'new_request' role="menuitem" class='with-icon'}}
+                            <img src="{{asset 'help.svg'}}" />Submit Ticket
+                        {{/link}}
+                        <a role="menuitem" class="with-icon" target="_new" href="mailto:support@actionstep.com"><img src="{{asset 'support.svg'}}" />Contact Support</a>
+                        <a role="menuitem" class="with-icon" target="_new" href="//www.actionstep.com/nz/resources/faq/"><img src="{{asset 'favorite.svg'}}" />FAQ</a>
+                        <a role="menuitem" class="with-icon" target="_new" href="//actionstep.uservoice.com/"><img src="{{asset 'attendees.svg'}}" />Feedback</a>
+                        <a role="menuitem" class="with-icon" target="_new" href="//www.youtube.com/channel/UCAqsSYVjQgxY8a7oqGBc5Ig/playlists"><img src="{{asset 'play_o.svg'}}" />Getting Started Videos</a>
+                    </div>
+                </div>
+            </li>
+        </nav>
+        {{user_info}}
+        <button type="button" class="btn navbar-toggle collapsed" data-toggle="sidepanel" data-target="#navbar-nav" style="opacity: 1;">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="sidepanel-overlay"></div>
+    <nav class="collapse navbar-collapse navbar-sidepanel side" id="navbar-nav" role="navigation">
+        <ul class="nav navbar-nav navbar-right nav-main">
+            <li>
+                <a role="menuitem" class="with-icon" target="_new" href="//ap-southeast-2.actionstep.com/mym/asfw/frontend/redirect/help-center-ticket">Submit Ticket</a>
+            </li>
+            <li>
+                <a role="menuitem" class="with-icon" target="_new" href="//www.actionstep.com/nz/resources/support/">Contact Support</a>
+            </li>
+            <li>
+                <a role="menuitem" class="with-icon" target="_new" href="//www.actionstep.com/nz/resources/faq/">FAQ</a>
+            </li>
+            <li>
+                <a role="menuitem" class="with-icon" target="_new" href="//actionstep.uservoice.com/">Feedback</a>
+            </li>
+            <li>
+                <a role="menuitem" class="with-icon" target="_new" href="//www.youtube.com/channel/UCAqsSYVjQgxY8a7oqGBc5Ig/playlists">Getting Started Videos</a>
+            </li>
+        </ul>
+        <div class="nav-divider"></div>
+        <ul class="external-link mt-3">
+            <li><a target="_new" href="//www.actionstep.com/nz/contact-us/">Contact</a></li>
+            <li><a target="_new" href="//www.actionstep.com/nz/about/">About us</a></li>
+            <li><a target="_new" href="//status.actionstep.com/">System status</a></li>
+            <li><a target="_new" href="//go.actionstep.com">Login</a></li>
+        </ul>
+    </nav>
+</header>

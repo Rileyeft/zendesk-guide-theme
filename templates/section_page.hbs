@@ -1,0 +1,69 @@
+<div class="bg-grey py-3 print-hidden">
+    <div class="container container-md">
+      <div class="search-nav">
+        {{search submit=false instant=true class='search'}}
+      </div>
+    </div>
+</div>
+<div class="bg-white border-top pt-1 pt-sm-2 print-hidden">
+    <div class="container container-md">
+        {{breadcrumbs}}
+  </div>
+</div>
+<div class="container container-md">
+  <div class="section-container">
+    <section class="section-content flex-col">
+      <header class="page-header">
+        <h1>{{section.name}}
+          {{#if section.internal}}
+            <span class="icon-lock" title="{{t 'internal'}}"></span>
+          {{/if}}
+        </h1>
+        {{#if section.description}}
+          <div role="hidden" class="description">{{section.description}}</div>
+          <div class="page-header-description"></div>
+          <script>
+          $(document).ready(function() {
+            $('.page-header-description').html( $('.description').text() );
+          });
+          </script>
+        {{/if}}
+      </header>
+      <div class="page-content-wrapper">
+          <div class="page-content">
+              <h5 class="mb-3 d-flex align-items-center">
+                  <span>Articles under this section</span>
+              </h5>
+              <div class="page-content-items">
+              {{#if section.articles}}
+                <ul class="article-list page-content-item">
+                  {{#each section.articles}}
+                    <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+                      {{#if promoted}}
+                        <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+                      {{/if}}
+                      <a href="{{url}}" class="article-list-link">{{title}}</a>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{else}}
+                <i class="section-empty">
+                  <a href="{{section.url}}">{{t 'empty'}}</a>
+                </i>
+              {{/if}}
+              </div>
+
+              {{pagination}}
+          </div>
+          <aside id="switchable" class="article-sidebar print-hidden">
+            <button class="btn js-close-recent-articles" id="closeRecentArticles">
+                <img class="img-svg" src="{{asset 'arrow_right.svg'}}" width="30"/>
+              </button>
+              <div class="article-sidebar-inner">
+                  {{recent_articles}}
+              </div>
+          </aside>
+      </div>
+    </section>
+  </div>
+</div>

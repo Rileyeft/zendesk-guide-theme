@@ -1,0 +1,92 @@
+<div class="bg-grey py-3 print-hidden">
+    <div class="container container-md">
+      <div class="search-nav">
+        {{search submit=false instant=true class='search'}}
+      </div>
+    </div>
+</div>
+<div class="bg-white border-top pt-1 pt-sm-2 print-hidden">
+    <div class="container container-md">
+        {{breadcrumbs}}
+  </div>
+</div>
+<div class="container container-md">
+  <div class="category-container">
+    <div class="category-content flex-col">
+      <header class="page-header">
+        <h1>{{category.name}}</h1>
+      </header>
+      <div class="page-content-wrapper">
+          <div class="page-content">
+          {{#if category.description}}
+            <div role="hidden" class="description">{{category.description}}</div>
+            <div class="page-header-description"></div>
+            <script>
+            $(document).ready(function() {
+              $('.page-header-description').html( $('.description').text() );
+            });
+            </script>
+          {{/if}}
+          <div class="page-content-items">
+            {{#each sections}}
+              <section class="section page-content-item {{#if internal}}internal{{/if}}">
+                <h3 class="section-tree-title">
+                  {{#if articles}}
+                  <a href="{{url}}" class="d-flex align-items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
+                        <path d="M25.5,10.15H4.42a.73.73,0,0,0-.73.73V24.14a.73.73,0,0,0,.73.73H25.5a.73.73,0,0,0,.73-.73V10.88A.73.73,0,0,0,25.5,10.15Zm-.73,13.26H5.15V11.61H24.77ZM10.72,5.8a.73.73,0,0,1,.73-.73h7a.73.73,0,0,1,0,1.46h-7A.73.73,0,0,1,10.72,5.8ZM7.2,8.34a.73.73,0,0,1,.73-.73H22a.73.73,0,0,1,0,1.46H7.94A.73.73,0,0,1,7.2,8.34Z"/>
+                      </svg>
+                      <span class="px-1">{{name}}</span>
+                  </a>
+                  {{else}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30">
+                          <path d="M25.5,10.15H4.42a.73.73,0,0,0-.73.73V24.14a.73.73,0,0,0,.73.73H25.5a.73.73,0,0,0,.73-.73V10.88A.73.73,0,0,0,25.5,10.15Zm-.73,13.26H5.15V11.61H24.77ZM10.72,5.8a.73.73,0,0,1,.73-.73h7a.73.73,0,0,1,0,1.46h-7A.73.73,0,0,1,10.72,5.8ZM7.2,8.34a.73.73,0,0,1,.73-.73H22a.73.73,0,0,1,0,1.46H7.94A.73.73,0,0,1,7.2,8.34Z"/>
+                        </svg>
+                        <span class="px-2">{{name}}</span>
+                  {{/if}}
+                  {{#if internal}}
+                    <span class="icon-lock" title="{{t 'internal'}}">Internal</span>
+                  {{/if}}
+                </h3>
+                {{#if articles}}
+                  <ul class="article-list ml-1">
+                    {{#each articles}}
+                      <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
+                        {{#if promoted}}
+                          <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+                        {{/if}}
+                        <a href="{{url}}" class="article-list-link">{{title}}</a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                  {{#if more_articles}}
+                    <a href="{{url}}" class="see-all-articles">
+                      {{t 'show_all_articles' count=article_count}}
+                    </a>
+                  {{/if}}
+                {{else}}
+                  <div class="section-empty pl-3 ml-1 border-left">
+                    {{t 'no_featured_posts'}}
+                  </div>
+                {{/if}}
+              </section>
+            {{else}}
+              <i class="category-empty">
+                <a href="{{category.url}}">{{t 'empty'}}</a>
+              </i>
+            {{/each}}
+            </div>
+          </div>
+          <aside id="switchable" class="article-sidebar print-hidden">
+            <button class="btn js-close-recent-articles" id="closeRecentArticles">
+                <img class="img-svg" src="{{asset 'arrow_right.svg'}}" width="30"/>
+              </button>
+              <div class="article-sidebar-inner">
+                  {{recent_articles}}
+              </div>
+          </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
