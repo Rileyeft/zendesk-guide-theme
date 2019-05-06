@@ -16,45 +16,9 @@
             <li class="blocks-item column-5 column-sm-5 column-lg-2">
                 <a href="{{url}}" data-id="{{id}}" class="blocks-item-link">
                     <div class="blocks-icon">
-                        {{#is name 'Admin'}}
-                            <img src="{{asset 'settings_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Get Started'}}
-                            <img src="{{asset 'home_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Navigation'}}
-                            <img src="{{asset 'apps_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Matters'}}
-                            <img src="{{asset 'matter_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Tasks'}}
-                            <img src="{{asset 'task_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Timesheet'}}
-                            <img src="{{asset 'timesheet_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Billing'}}
-                            <img src="{{asset 'billing_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Trust Accounting'}}
-                            <img src="{{asset 'bill_profile_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Contacts'}}
-                            <img src="{{asset 'contacts_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Calendar'}}
-                            <img src="{{asset 'calendar_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Documents'}}
-                            <img src="{{asset 'folder_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Email'}}
-                            <img src="{{asset 'message_solid.svg' }}" class="img-svg" />
-                        {{/is}}
-                        {{#is name 'Accounting'}}
-                            <img src="{{asset 'accounting_solid.svg' }}" class="img-svg" />
-                        {{/is}}
+
+                      <img src="{{asset name suffix=".svg"}}" class="img-svg" width="60" height="60" />
+
                     </div>
                     <h5 class="blocks-item-title">{{name}}</h5>
                 </a>
