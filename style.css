@@ -3038,13 +3038,23 @@ table td {
   border-radius: 3px;
   display: block;
   padding: 2rem 0;
-  transition: all 0.3s;
+  transition: all .085s ease-in-out;
 }
 
 .blocks-item-link:hover {
   background-color: $brand_color;
   border: 1px solid $brand_color;
   text-decoration: none;
+}
+
+.blocks-item-link .blocks-icon {
+  transform: translateY(0);
+  transition: transform .25s ease-in;
+}
+
+.blocks-item-link:hover .blocks-icon {
+  transform: translateY(-5px);
+  transition: transform .25s ease-in;
 }
 
 .blocks-item-link:hover svg path {

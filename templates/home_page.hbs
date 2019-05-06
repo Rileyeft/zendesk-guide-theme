@@ -1,5 +1,5 @@
 <section class="section hero bg-dark" style="background-color:#334462">
-  <div class="hero-inner container container-md">
+  <div class="hero-inner container zzcontainer-md">
     <h2 class="hero-header text-center pb-2">Hi! How can we help?</h2>
     {{search submit=false instant=true class='search search-full' placeholder='Search (e.g. “add contact” or “bill templates”)'}}
   </div>
@@ -7,7 +7,7 @@
 
 <div class="container">
   <section class="section knowledge-base">
-    <h2 class="text-center mb-3">Popular Topics in the Guide</h2>
+    <!-- <h2 class="text-center mb-5">Popular Topics in the Guide</h2> -->
     <div class="categories blocks">
       <ul class="blocks-list">
         {{#each categories}}
@@ -20,7 +20,7 @@
                       <img src="{{asset id suffix=".svg"}}" class="img-svg" width="60" height="60" />
 
                     </div>
-                    <h5 class="blocks-item-title">{{name}}</h5>
+                    <h5 class="blocks-item-title mt-2">{{name}}</h5>
                 </a>
             </li>
             {{/if}}
