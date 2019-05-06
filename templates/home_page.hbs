@@ -1,6 +1,6 @@
 <section class="section hero bg-dark" style="background-color:#334462">
-  <div class="hero-inner container zzcontainer-md">
-    <h2 class="hero-header text-center pb-2">Hi! How can we help?</h2>
+  <div class="hero-inner container">
+    <h2 class="hero-header mb-3">How can we help?</h2>
     {{search submit=false instant=true class='search search-full' placeholder='Search (e.g. “add contact” or “bill templates”)'}}
   </div>
 </section>
@@ -13,7 +13,7 @@
         {{#each categories}}
           {{#if ../has_multiple_categories}}
             {{#if sections}}
-            <li class="blocks-item column-5 column-sm-5 column-lg-2">
+            <li class="blocks-item column-4 column-sm-4 column-lg-2">
                 <a href="{{url}}" data-id="{{id}}" class="blocks-item-link">
                     <div class="blocks-icon">
 
